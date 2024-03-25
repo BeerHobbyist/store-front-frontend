@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { product } from '../products';  // mock database data. Implement it props later
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const selectedAmount = ref(0);
+
+watch(selectedAmount, (newValue: number) => {
+  if (newValue < 0) {
+    selectedAmount.value = 0;
+  }
+});
 </script>
 
 <template>
@@ -11,7 +17,7 @@ const selectedAmount = ref(0);
         <p>{{ product.packageType }}</p>
         <p>{{ product.price }}</p>
         <div class="couter"> 
-            <input type="number" v-model="selectedAmount">        
+            <input type="number" min="0" v-model="selectedAmount">        
         </div>
     </div>
 </template>
