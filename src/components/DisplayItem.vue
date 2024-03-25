@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+import { cartStore } from '../cart';
 
-const props = defineProps<{ name?: string, packageType?: string }>();
+const props = defineProps<{id: number, name?: string, packageType?: string }>();
 
 const selectedAmount = ref(1);
 
@@ -10,6 +11,7 @@ watch(selectedAmount, (newValue: number) => {
         selectedAmount.value = 0;
     }
 });
+
 </script>
 
 <template>
@@ -17,9 +19,9 @@ watch(selectedAmount, (newValue: number) => {
         <h3>{{ props.name }}</h3>
         <p>{{ props.packageType }}</p>
         <div class="couter">
-            <input type="number" min="0" v-model="selectedAmount">
-            <button>
-                
+            <input name="field" type="number" min="0" v-model="selectedAmount">
+            <button @click="cartStore.addToCart(props.id, selectedAmount)">
+                <img src="/public/shopping-cart.svg" alt="shopping cart">
             </button>
         </div>
     </div>
@@ -47,7 +49,7 @@ watch(selectedAmount, (newValue: number) => {
 
 .couter input {
     width: 50px;
-    height: 15px;
+    height: 25px;
     text-align: center;
     border: none;
     border-radius: 5px 0px 0px 5px;
@@ -56,14 +58,20 @@ watch(selectedAmount, (newValue: number) => {
 }
 
 .couter button {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     border: none;
     border-radius: 0px 5px 5px 0px;
     background-color: #ccc;
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+.couter img {
+    padding: 7px 0px 0px 0px;
+    width: 25px;
+    height: 25px;
 }
 
 
