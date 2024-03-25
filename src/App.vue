@@ -1,24 +1,20 @@
 <script setup lang="ts">
 import AppBar from './components/AppBar.vue'
 import DisplayItem from './components/DisplayItem.vue'
+import { productsStore } from './products'
+import { onMounted } from 'vue'
+
+
+onMounted(async () => {
+  productsStore.fetchProducts();
+});
+
 </script>
 
 <template>
   <AppBar />
-  <h1>HelloWorld</h1>
   <div class="item-display">
-    <DisplayItem />
-    <DisplayItem />
-    <DisplayItem />
-    <DisplayItem />
-    <DisplayItem />
-    <DisplayItem />
-    <DisplayItem />
-    <DisplayItem />
-    <DisplayItem />
-    <DisplayItem />
-    <DisplayItem />
-    <DisplayItem />
+    <DisplayItem v-for="product in productsStore.products" :key="product.id" :name="product.productName" :packageType="product.packagingType" />
   </div>
 </template>
 
