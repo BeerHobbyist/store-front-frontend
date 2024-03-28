@@ -3,6 +3,7 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
 }
 
 /* For Webkit browsers like Chrome, Safari */
@@ -25,4 +26,12 @@ input[type=number]::-webkit-inner-spin-button {
 
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+:root {
+  --background-color: #F8F6E3;
+  --primary-color: #97E7E1;
+  --secondary-color: #6AD4DD;
+  --accent-color: #7AA2E3;
+  --text-color: #333; /* Assuming a darker color for text for readability */
 }

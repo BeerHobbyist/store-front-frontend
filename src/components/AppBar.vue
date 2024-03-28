@@ -18,8 +18,8 @@
 
 <style scoped>
 .app-bar {
-  background-color: #464646;
-  padding: 1rem;
+  background-color: var(--primary-color);
+  padding: 1.2rem;
 }
 
 .app-bar-content {
@@ -32,8 +32,8 @@
 .title-caption {
   margin: 0;
   font-size: 1.5rem;
-  color: white;
-  text-transform: uppercase; /* Optional: makes it look more "app-bar-like" */
+  color: var(--text-color);
+  text-transform: uppercase;
 }
 
 .left, .right {
@@ -43,11 +43,11 @@
 
 /* Style for RouterLink */
 .router-link-active, .router-link-exact-active, .right a {
-  color: white; /* Match the text color to the app bar */
+  color: var(--text-color); /* Match the text color to the app bar */
   text-decoration: none; /* Remove underline from links */
   padding: 0.5rem 1rem;
   background-color: transparent;
-  border: 2px solid white; /* Optional: Adds a border to the link */
+  border: 2px solid var(--text-color); /* Optional: Adds a border to the link */
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
   margin-left: 1rem; /* Space out multiple right-side items */
@@ -55,8 +55,8 @@
 
 /* Hover effects for links */
 .right a:hover, .right a:focus {
-  background-color: white; /* Background color on hover */
-  color: #464646; /* Text color on hover */
+  background-color: var(--secondary-color); /* Background color on hover */
+  color: var(--text-color); /* Text color on hover */
   text-decoration: none; /* Ensure no underline appears on hover */
 }
 </style>
