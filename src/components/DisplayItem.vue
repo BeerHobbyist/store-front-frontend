@@ -30,7 +30,7 @@ watch(selectedAmount, (newValue: number) => {
 <style scoped>
 .item {
     border: 1px solid #ccc;
-    background-color: gray;
+    background-color: var(--secondary-color);
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
@@ -39,6 +39,11 @@ watch(selectedAmount, (newValue: number) => {
     align-items: center;
     text-align: center;
     width: 150px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.item:hover {
+    transform: scale(1.07); /* Slightly increase the size */
 }
 
 .couter {
