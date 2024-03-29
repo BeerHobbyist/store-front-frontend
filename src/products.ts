@@ -4,6 +4,7 @@ type Product = {
     id: number;
     productName: string;
     packagingType: string;
+    price: number;
 }
 
 

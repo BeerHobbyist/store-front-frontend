@@ -3,7 +3,7 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: var(--background-color);
+    background-color: white;
 }
 
 /* For Webkit browsers like Chrome, Safari */
@@ -33,5 +33,13 @@ input[type=number] {
   --primary-color: #97E7E1;
   --secondary-color: #6AD4DD;
   --accent-color: #7AA2E3;
-  --text-color: #333; /* Assuming a darker color for text for readability */
+  --text-color: #333;
+  --success-color: #2ecc71;
+  --warning-color: #f1c40f;
+  --error-color: #e74c3c;
+  --information-color: #3498db;
+  --light-primary: #B0EFEF;
+  --dark-primary: #76B2B1;
+  --disabled-color: #cccccc;
+  --text-color: #333;
 }
