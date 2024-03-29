@@ -3,7 +3,7 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: white;
+    background-color: var(--neutral-gray);
 }
 
 /* For Webkit browsers like Chrome, Safari */
@@ -42,4 +42,6 @@ input[type=number] {
   --dark-primary: #76B2B1;
   --disabled-color: #cccccc;
   --text-color: #333;
+  --neutral-gray: #ededed;
+  --darker-gray: #ebebeb;
 }

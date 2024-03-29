@@ -1,26 +1,40 @@
 <script setup lang="ts">
 
-defineProps<{ selectedAmount: number, name?: string }>();
+defineProps<{ selectedAmount: number, name?: string, price: number }>();
 
 </script>
 
 <template>
-    <div class="cartItem">
-        <p> {{ name }} </p>
-        <p> {{ selectedAmount }} </p>
-    </div>
+    <tr class="item">
+        <td>{{ name }}</td>
+        <td>{{ price }} zł</td>
+        <td>
+            <input name="field" type="number" min="0" :value="selectedAmount">
+        </td>
+    </tr>
 </template>
 
 <style scoped>
-.cartItem {
-    border: 1px solid #ccc;
-    background-color: gray;
-    border-radius: 10px;
-    margin: 1px;
-    justify-content: center;
-    flex-direction: row;
-    display: flex;
-    text-align: center;
-    width: 100%;
+.item td {
+    background-color: white; /* Background color */
+    height: 45px;
+    border-bottom: 1px solid var(--neutral-gray);
+    border-right: 1px solid var(--neutral-gray);
+    padding: 10px;
 }
+
+.item td:last-child {
+    border-right: none;
+    width: 55px;
+    text-align: center;
+}
+
+.item td input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid var(--neutral-gray);
+    border-radius: 5px;
+}
+
 </style>

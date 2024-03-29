@@ -2,14 +2,23 @@
 import { cartStore } from '@/cart';
 import { productsStore } from '@/products';
 import CartItem from '../components/CartItem.vue'
+import { computed } from 'vue';
 
 const getName = (id: number) => {
     return productsStore.products.find((product) => product.id === id)?.productName;
 };
 
-const getPrice = (id: number) => {
-    return productsStore.products.find((product) => product.id === id)?.price;
+const getPrice = (id: number) : number => {
+    return productsStore.products.find((product) => product.id === id)?.price ?? 0;
 };
+
+const totalPrice = computed(() => {
+    return cartStore.cartItems.reduce((acc, item) => {
+        const productPrice = productsStore.products.find(product => product.id === item.id)?.price ?? 0;
+        return acc + productPrice * item.count;
+    }, 0);
+
+});
 
 </script>
 
@@ -19,83 +28,81 @@ const getPrice = (id: number) => {
             <thead>
                 <tr>
                     <th>Product</th>
-                    <th>Amount</th>
                     <th>Price</th>
+                    <th>Amount</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in cartStore.cartItems" :key="item.id">
-                    <td>{{ getName(item.id) }}</td>
-                    <td>{{ item.count }}</td>
-                    <td>{{ getPrice(item.id) }}</td>
-                </tr>
+                <CartItem v-for="item in cartStore.cartItems" :key="item.id" :name="getName(item.id)" :selectedAmount="item.count" :price="Number((getPrice(item.id) * item.count).toFixed(2))"/>
             </tbody>
             <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total: {{ totalPrice.toFixed(2) }} zł</td>
+                    
+                </tr>
+                <tr>
+                    <td colspan="3"> <!-- This makes the cell span all columns -->
+                        <div class="checkout-field">
+                            <button>Checkout</button>
+                        </div>
+                    </td>
+                </tr>
             </tfoot>
         </table>
     </div>
 </template>
 
 <style scoped>
+
 .itemList {
-    border: 2px solid var(--accent-color); /* Accent color for the border */
     margin: auto;
     margin-top: 20px; /* Space from the top of the page */
-    width: 50%;
-    background-color: var(--background-color); /* Background color */
-    border-radius: 10px; /* Rounded corners */
+    width: 68%;
+    background-color: var(--secondary-color); /* Background color */
+    border-radius: 3px; /* Rounded corners */
     overflow: hidden; /* Ensures the inner table respects the container's border-radius */
-    /* Other styles */
+    padding: 1px;
 }
 
 .itemList table {
     width: 100%; 
     border-collapse: separate; /* Allows for spacing between cells */
-    border-spacing: 0; /* Adjusts the spacing to zero for a clean look */
-}
-
-.itemList th, .itemList td {
-    padding: 8px;
-    background-color: #FFFFFF; /* Table cells have a white background */
-    border-right: 1px solid var(--accent-color); /* Adds vertical lines between columns */
-    border-bottom: 1px solid var(--accent-color); /* Adds horizontal lines between rows */
+    border-spacing: 0px; /* Adjusts the spacing to zero for a clean look */
+    overflow: hidden;
+    border-radius: 3px;
 }
 
 /* Remove the border from the last column */
-.itemList th:last-child, .itemList td:last-child {
-    border-right: none;
-}
 
-.itemList th {
-    text-align: left;
-    background-color: var(--primary-color); /* Primary color for the header background */
-    color: var(--text-color); /* A darker color for text */
-    /* Apply border-radius to the first and last th elements if necessary */
-}
 
-.itemList tr:first-child th:first-child {
-    border-top-left-radius: 10px;
-}
-
-.itemList tr:first-child th:last-child {
-    border-top-right-radius: 10px;
-}
-
-.itemList tr:last-child td:first-child {
-    border-bottom-left-radius: 10px;
-}
-
-.itemList tr:last-child td:last-child {
-    border-bottom-right-radius: 10px;
-}
-
-/* Ensure the table headers have a bottom border as well */
 .itemList thead th {
-    border-bottom: 2px solid var(--accent-color); /* Accent color for the bottom border of headers */
+    padding: 10px; /* Apply padding directly to the table header cells */
+    text-align: left;
+    color: var(--text-color); /* A darker color for text */
+    background-color: white; /* If you want the headers to stand out */
+    border-right: 1px solid var(--neutral-gray); /* Add a border to the right of each header cell */
+    border-bottom: 1px solid var(--neutral-gray); /* Add a border to the bottom of each header cell */
 }
 
-/* Remove bottom border for the last row to match the table's bottom border-radius */
-.itemList tr:last-child td {
-    border-bottom: none;
+.itemList thead th:last-child {
+    border-right: none; /* Remove the border from the last header cell */
+}
+
+.itemList tfoot td {
+    text-align: right;
+    color: var(--text-color); /* A darker color for text */
+    background-color: var(--darker-gray);
+    height: 30px;
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.checkout-field {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 </style>

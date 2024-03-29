@@ -15,6 +15,7 @@ import { onMounted } from 'vue'
 
 <style scoped>
 .item-display {
+    background-color: var(--neutral-gray);
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
