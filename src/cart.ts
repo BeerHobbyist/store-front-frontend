@@ -15,5 +15,8 @@ export const cartStore = reactive({
             cartStore.cartItems.push({ id, count: amount });
         }
         console.log(cartStore.cartItems);
+    },
+    clearCart: () => {
+        cartStore.cartItems = [];
     }
 });
