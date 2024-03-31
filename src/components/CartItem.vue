@@ -1,15 +1,19 @@
 <script setup lang="ts">
+import { defineProps, defineEmits, ref } from 'vue';
 
-defineProps<{ selectedAmount: number, name?: string, price: number }>();
+const props = defineProps<{ selectedAmount: number, name?: string, price: number }>();
+defineEmits(['update:selectedAmount']);
+
+const currentAmount = ref(props.selectedAmount);
 
 </script>
 
 <template>
     <tr class="item">
-        <td>{{ name }}</td>
-        <td>{{ price }} zł</td>
+        <td>{{ props.name }}</td>
+        <td>{{ props.price }} zł</td>
         <td>
-            <input name="field" type="number" min="0" :value="selectedAmount">
+            <input name="field" type="number" min="0" v-model="currentAmount">
         </td>
     </tr>
 </template>

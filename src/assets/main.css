@@ -33,7 +33,9 @@ input[type=number] {
   --primary-color: #97E7E1;
   --secondary-color: #6AD4DD;
   --accent-color: #7AA2E3;
+  --accent-dark: #6688bf;
   --text-color: #333;
+  --text-color-light: #4a4a4a;
   --success-color: #2ecc71;
   --warning-color: #f1c40f;
   --error-color: #e74c3c;
@@ -41,7 +43,6 @@ input[type=number] {
   --light-primary: #B0EFEF;
   --dark-primary: #76B2B1;
   --disabled-color: #cccccc;
-  --text-color: #333;
   --neutral-gray: #ededed;
   --darker-gray: #ebebeb;
 }

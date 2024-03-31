@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { cartStore } from '@/cart';
 import { productsStore } from '@/products';
+import CartFoot from '../components/CartFoot.vue'
 import CartItem from '../components/CartItem.vue'
 import { computed } from 'vue';
 
@@ -35,22 +36,9 @@ const totalPrice = computed(() => {
             <tbody>
                 <CartItem v-for="item in cartStore.cartItems" :key="item.id" :name="getName(item.id)" :selectedAmount="item.count" :price="Number((getPrice(item.id) * item.count).toFixed(2))"/>
             </tbody>
-            <tfoot>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Total: {{ totalPrice.toFixed(2) }} zł</td>
-                    
-                </tr>
-                <tr>
-                    <td colspan="3"> <!-- This makes the cell span all columns -->
-                        <div class="checkout-field">
-                            <button>Checkout</button>
-                        </div>
-                    </td>
-                </tr>
-            </tfoot>
+            
         </table>
+        <CartFoot :totalPrice="Number(totalPrice.toFixed(2))"/>
     </div>
 </template>
 
@@ -63,7 +51,7 @@ const totalPrice = computed(() => {
     background-color: var(--secondary-color); /* Background color */
     border-radius: 3px; /* Rounded corners */
     overflow: hidden; /* Ensures the inner table respects the container's border-radius */
-    padding: 1px;
+    box-shadow: 0px 0px 2px 0px var(--text-color); /* Adds a shadow to the container */
 }
 
 .itemList table {
@@ -71,11 +59,12 @@ const totalPrice = computed(() => {
     border-collapse: separate; /* Allows for spacing between cells */
     border-spacing: 0px; /* Adjusts the spacing to zero for a clean look */
     overflow: hidden;
-    border-radius: 3px;
+    border-radius: 0px;
 }
 
-/* Remove the border from the last column */
-
+.itemList tbody tr:last-child td {
+    border-radius: 0px;
+}
 
 .itemList thead th {
     padding: 10px; /* Apply padding directly to the table header cells */
@@ -88,16 +77,6 @@ const totalPrice = computed(() => {
 
 .itemList thead th:last-child {
     border-right: none; /* Remove the border from the last header cell */
-}
-
-.itemList tfoot td {
-    text-align: right;
-    color: var(--text-color); /* A darker color for text */
-    background-color: var(--darker-gray);
-    height: 30px;
-    padding: 10px;
-    font-size: large;
-    font-weight: bold;
 }
 
 .checkout-field {
