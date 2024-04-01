@@ -9,7 +9,7 @@ const getName = (id: number) => {
     return productsStore.products.find((product) => product.id === id)?.productName;
 };
 
-const getPrice = (id: number) : number => {
+const getPrice = (id: number): number => {
     return productsStore.products.find((product) => product.id === id)?.price ?? 0;
 };
 
@@ -20,6 +20,10 @@ const totalPrice = computed(() => {
     }, 0);
 
 });
+
+const updateSelectedAmount = (id: number, amount: number) => {
+    cartStore.updateAmount(id, amount);
+};
 
 </script>
 
@@ -34,30 +38,38 @@ const totalPrice = computed(() => {
                 </tr>
             </thead>
             <tbody>
-                <CartItem v-for="item in cartStore.cartItems" :key="item.id" :name="getName(item.id)" :selectedAmount="item.count" :price="Number((getPrice(item.id) * item.count).toFixed(2))"/>
+                <CartItem v-for="item in cartStore.cartItems" :key="item.id" :name="getName(item.id)"
+                    :selectedAmount="item.count" :price="Number((getPrice(item.id) * item.count).toFixed(2))"
+                    :id="item.id" @amountChanged="updateSelectedAmount" />
             </tbody>
-            
+
         </table>
-        <CartFoot :totalPrice="Number(totalPrice.toFixed(2))"/>
+        <CartFoot :totalPrice="Number(totalPrice.toFixed(2))" />
     </div>
 </template>
 
 <style scoped>
-
 .itemList {
     margin: auto;
-    margin-top: 20px; /* Space from the top of the page */
+    margin-top: 20px;
+    /* Space from the top of the page */
     width: 68%;
-    background-color: var(--secondary-color); /* Background color */
-    border-radius: 3px; /* Rounded corners */
-    overflow: hidden; /* Ensures the inner table respects the container's border-radius */
-    box-shadow: 0px 0px 2px 0px var(--text-color); /* Adds a shadow to the container */
+    background-color: var(--secondary-color);
+    /* Background color */
+    border-radius: 3px;
+    /* Rounded corners */
+    overflow: hidden;
+    /* Ensures the inner table respects the container's border-radius */
+    box-shadow: 0px 0px 2px 0px var(--text-color);
+    /* Adds a shadow to the container */
 }
 
 .itemList table {
-    width: 100%; 
-    border-collapse: separate; /* Allows for spacing between cells */
-    border-spacing: 0px; /* Adjusts the spacing to zero for a clean look */
+    width: 100%;
+    border-collapse: separate;
+    /* Allows for spacing between cells */
+    border-spacing: 0px;
+    /* Adjusts the spacing to zero for a clean look */
     overflow: hidden;
     border-radius: 0px;
 }
@@ -67,16 +79,22 @@ const totalPrice = computed(() => {
 }
 
 .itemList thead th {
-    padding: 10px; /* Apply padding directly to the table header cells */
+    padding: 10px;
+    /* Apply padding directly to the table header cells */
     text-align: left;
-    color: var(--text-color); /* A darker color for text */
-    background-color: white; /* If you want the headers to stand out */
-    border-right: 1px solid var(--neutral-gray); /* Add a border to the right of each header cell */
-    border-bottom: 1px solid var(--neutral-gray); /* Add a border to the bottom of each header cell */
+    color: var(--text-color);
+    /* A darker color for text */
+    background-color: white;
+    /* If you want the headers to stand out */
+    border-right: 1px solid var(--neutral-gray);
+    /* Add a border to the right of each header cell */
+    border-bottom: 1px solid var(--neutral-gray);
+    /* Add a border to the bottom of each header cell */
 }
 
 .itemList thead th:last-child {
-    border-right: none; /* Remove the border from the last header cell */
+    border-right: none;
+    /* Remove the border from the last header cell */
 }
 
 .checkout-field {

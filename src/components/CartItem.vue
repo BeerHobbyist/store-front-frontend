@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, ref } from 'vue';
+import { defineProps, ref, watch } from 'vue';
 
-const props = defineProps<{ selectedAmount: number, name?: string, price: number }>();
-defineEmits(['update:selectedAmount']);
+const props = defineProps<{id:number, selectedAmount: number, name?: string, price: number }>();
 
 const currentAmount = ref(props.selectedAmount);
+
+watch(currentAmount, (newValue: number) => {
+    if (newValue < 0) {
+        currentAmount.value = 0;
+    }
+});
 
 </script>
 
@@ -13,7 +18,7 @@ const currentAmount = ref(props.selectedAmount);
         <td>{{ props.name }}</td>
         <td>{{ props.price }} zł</td>
         <td>
-            <input name="field" type="number" min="0" v-model="currentAmount">
+            <input @change="$emit('amountChanged', props.id, currentAmount)" name="field" type="number" min="0" v-model.number="currentAmount">
         </td>
     </tr>
 </template>

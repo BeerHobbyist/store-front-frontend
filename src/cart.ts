@@ -18,5 +18,14 @@ export const cartStore = reactive({
     },
     clearCart: () => {
         cartStore.cartItems = [];
+    },
+    updateAmount: (id: number, amount: number) => {
+        const cartItem = cartStore.cartItems.find(item => item.id === id);
+        if (cartItem) {
+            cartItem.count = amount;
+        }
+        else {
+            console.error('Item not found in cart');
+        }
     }
 });
