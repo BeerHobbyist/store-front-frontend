@@ -4,7 +4,7 @@ import ItemSection from '../components/ItemSection.vue'
 </script>
 
 <template>
-    <div v-for="category in categoriesStore.categories">
+    <div v-for="category in categoriesStore.categories" :key="category.name">
         <ItemSection :sectionName="category.name" :items="category.products" />
     </div>
 </template>
