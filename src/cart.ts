@@ -1,13 +1,13 @@
 import { reactive } from 'vue';
 
 type CartItem = {
-    id: number;
+    id: string;
     count: number;
 }
 
 export const cartStore = reactive({
     cartItems: [] as CartItem[],
-    addToCart: (id: number, amount: number) => {
+    addToCart: (id: string, amount: number) => {
         const cartItem = cartStore.cartItems.find(item => item.id === id);
         if (cartItem) {
             cartItem.count += amount;
@@ -19,7 +19,7 @@ export const cartStore = reactive({
     clearCart: () => {
         cartStore.cartItems = [];
     },
-    updateAmount: (id: number, amount: number) => {
+    updateAmount: (id: string, amount: number) => {
         const cartItem = cartStore.cartItems.find(item => item.id === id);
         if (cartItem) {
             cartItem.count = amount;

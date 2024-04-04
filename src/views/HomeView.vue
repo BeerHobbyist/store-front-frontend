@@ -9,7 +9,7 @@ import { onMounted } from 'vue'
 <template>
     <div class="item-display">
         <DisplayItem v-for="product in productsStore.products" :key="product.id" :id="product.id"
-            :name="product.productName" :packageType="product.packagingType" :price="product.price"/>
+            :name="product.name" :packageType="product.packageType" :price="product.price"/>
     </div>
 </template>
 

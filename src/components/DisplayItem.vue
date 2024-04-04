@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue';
 import { cartStore } from '../cart';
 
-const props = defineProps<{ id: number, name?: string, packageType?: string, price: number }>();
+const props = defineProps<{ id: string, name?: string, packageType?: string, price: number }>();
 
 const selectedAmount = ref(1);
 

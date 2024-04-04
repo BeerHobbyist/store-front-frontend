@@ -5,11 +5,11 @@ import CartFoot from '../components/CartFoot.vue'
 import CartItem from '../components/CartItem.vue'
 import { computed } from 'vue';
 
-const getName = (id: number) => {
-    return productsStore.products.find((product) => product.id === id)?.productName;
+const getName = (id: string) => {
+    return productsStore.products.find((product) => product.id === id)?.name;
 };
 
-const getPrice = (id: number): number => {
+const getPrice = (id: string): number => {
     return productsStore.products.find((product) => product.id === id)?.price ?? 0;
 };
 
@@ -21,7 +21,7 @@ const totalPrice = computed(() => {
 
 });
 
-const updateSelectedAmount = (id: number, amount: number) => {
+const updateSelectedAmount = (id: string, amount: number) => {
     cartStore.updateAmount(id, amount);
 };
 

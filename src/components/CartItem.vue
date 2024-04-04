@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, ref, watch } from 'vue';
 
-const props = defineProps<{id:number, selectedAmount: number, name?: string, price: number }>();
+const props = defineProps<{id:string, selectedAmount: number, name?: string, price: number }>();
 
 const currentAmount = ref(props.selectedAmount);
 
