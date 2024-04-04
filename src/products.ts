@@ -1,11 +1,17 @@
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 
-type Product = {
+export type Product = {
     id: string;
     name: string;
     packageType: string;
     price: number;
     imageUrl: string;
+    category: string;
+}
+
+type ProductCategory = {
+    name: string;
+    products: Product[];
 }
 
 function isProduct(item: any): item is Product {
@@ -15,7 +21,8 @@ function isProduct(item: any): item is Product {
         'name' in item && typeof item.name === 'string' &&
         'packageType' in item && typeof item.packageType === 'string' &&
         'price' in item && typeof item.price === 'number' &&
-        'imageUrl' in item && typeof item.imageUrl === 'string'
+        'imageUrl' in item && typeof item.imageUrl === 'string' &&
+        'category' in item && typeof item.category === 'string'
     );
 }
 
@@ -35,5 +42,24 @@ export const productsStore = reactive({
         } catch (error) {
             console.error(error);
         }
+    },
+    populateCategories: () => {
+        const categories = productsStore.products.reduce((accumulator, product) => {
+            const category = accumulator.find(category => category.name === product.category);
+            if (category) {
+                category.products.push(product);
+            } else {
+                accumulator.push({
+                    name: product.category,
+                    products: [product]
+                });
+            }
+            return accumulator;
+        }, [] as ProductCategory[]);
+        categoriesStore.categories = categories;
     }
+});
+
+export const categoriesStore = reactive({
+    categories: [] as ProductCategory[]
 });

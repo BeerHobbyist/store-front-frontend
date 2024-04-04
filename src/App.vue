@@ -4,8 +4,9 @@ import AppBar from './components/AppBar.vue'
 import { productsStore } from './products';
 
 
-onMounted(() => {
-    productsStore.fetchProducts();
+onMounted(async () => {
+    await productsStore.fetchProducts();
+    productsStore.populateCategories();
 });
 </script>
 
