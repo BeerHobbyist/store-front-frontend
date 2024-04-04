@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue';
 import { cartStore } from '../cart';
 
-const props = defineProps<{ id: string, name?: string, packageType?: string, price: number }>();
+const props = defineProps<{ id: string, name?: string, packageType?: string, price: number, imageUrl: string }>();
 
 const selectedAmount = ref(1);
 
@@ -16,7 +16,7 @@ watch(selectedAmount, (newValue: number) => {
 
 <template>
     <div class="item">
-        <img class="product-image" src="/public/placeholer-product.svg" alt="placeholder image">
+        <img class="product-image" :src="imageUrl">
         <div class="product-attributes">
             <div>{{ props.name }}</div>
             <div>{{ props.packageType }}</div>

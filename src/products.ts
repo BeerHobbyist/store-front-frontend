@@ -5,6 +5,7 @@ type Product = {
     name: string;
     packageType: string;
     price: number;
+    imageUrl: string;
 }
 
 function isProduct(item: any): item is Product {
@@ -13,7 +14,8 @@ function isProduct(item: any): item is Product {
         'id' in item && typeof item.id === 'string' &&
         'name' in item && typeof item.name === 'string' &&
         'packageType' in item && typeof item.packageType === 'string' &&
-        'price' in item && typeof item.price === 'number'
+        'price' in item && typeof item.price === 'number' &&
+        'imageUrl' in item && typeof item.imageUrl === 'string'
     );
 }
 
