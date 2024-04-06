@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="app-bar">
+  <div class="bg-cyan-600 p-5">
     <div class="app-bar-content">
       <div class="left">
         <h1 class="title-caption">App Bar</h1>

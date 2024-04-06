@@ -15,90 +15,22 @@ watch(selectedAmount, (newValue: number) => {
 </script>
 
 <template>
-    <div class="item">
-        <img class="product-image" :src="imageUrl">
-        <div class="product-attributes">
+    <div
+        class="flex flex-col items-center bg-white ring-cyan-600 shadow-lg rounded-lg w-52 m-4 p2 transition ease-in-out duration-300 hover:shadow-2xl">
+        <img class="w-40 m-1" :src="imageUrl">
+        <div class="m-1 text-center">
             <div>{{ props.name }}</div>
             <div>{{ props.packageType }}</div>
             <div>{{ props.price }} zł</div>
         </div>
-        <div class="counter">
-            <input name="field" type="number" min="0" v-model="selectedAmount">
-            <button @click="cartStore.addToCart(props.id, selectedAmount)">
-                <img src="/public/shopping-cart.svg" alt="shopping cart">
+        <div class="h-14 flex justify-between items-center">
+            <input class="border-gray-300 border-solid border rounded-lg text-center w-12 h-9 m-2" name="field"
+                type="number" min="0" v-model="selectedAmount">
+            <button
+                class="w-9 h-9 bg-blue-400 transition ease-in-out duration-300 hover:bg-blue-500 rounded-lg p-2 shadow-lg"
+                @click="cartStore.addToCart(props.id, selectedAmount)">
+                <img class="m-auto" src="/shopping-cart.svg" alt="shopping cart">
             </button>
         </div>
     </div>
 </template>
-
-<style scoped>
-.product-attributes {
-    margin: 10px 10px;
-}
-
-.item {
-    box-shadow: 0px 0px 2px 0px var(--text-color); /* Adds a shadow to the container */
-    background-color: white;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 200px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.item:hover {
-    transform: scale(1.07);
-    /* Slightly increase the size */
-}
-
-.counter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.counter input {
-    width: 50px;
-    height: 25px;
-    text-align: center;
-    border: none;
-    border-radius: 5px 0px 0px 5px;
-    padding: 5px;
-    margin: 0ch;
-    border: 1px solid var(--neutral-gray);
-    border-radius: 5px;
-}
-
-.counter button {
-    width: 35px;
-    height: 35px;
-    border: none;
-    border-radius: 5px;
-    margin-left: 5px;
-    background-color: var(--accent-color);
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
-}
-
-.counter button:hover {
-    transform: scale(1.05); /* Slightly enlarge the button on hover */
-  }
-
-.counter img {
-    padding: 7px 0px 0px 0px;
-    width: 25px;
-    height: 25px;
-}
-
-.product-image {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
-}
-</style>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DefaultFormInput from '@/components/DefaultFormInput.vue';
-import DefaultButton from '@/components/DefaultButton.vue';
+import WideButton from '@/components/WideButton.vue';
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import DefaultButton from '@/components/DefaultButton.vue';
         <DefaultFormInput class="input-form" label="Email:" inputId="email" type="email"/>
         <DefaultFormInput class="comment-input-form" label="Uwagi:" inputId="comment"/>
         <div class="order-button-container">
-            <DefaultButton>Wyślij</DefaultButton>
+            <WideButton>Wyślij</WideButton>
         </div>
     </form>
     </div>
