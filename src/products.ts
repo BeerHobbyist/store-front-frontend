@@ -30,7 +30,7 @@ export const productsStore = reactive({
     products: [] as Product[],
     fetchProducts: async () => {
         try {
-            const response = await fetch('http://127.0.0.1:5001/belex-storefront/us-central1/getProducts');
+            const response = await fetch('http://127.0.0.1:5001/belex-storefront/us-central1/api/products');
             const data: any[] = await response.json();
             data.forEach((item: any) => {
                 if (isProduct(item)) {

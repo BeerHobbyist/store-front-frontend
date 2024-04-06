@@ -7,7 +7,7 @@ defineProps<{ totalPrice: number }>();
 <template>
     <div class="cart-foot">
         <DefaultButton @click="cartStore.clearCart">Clear cart</DefaultButton>
-        <DefaultButton >Checkout</DefaultButton>
+        <DefaultButton @click="$router.push('/checkout')">Checkout</DefaultButton>
         <div>
             <div class="price-text">
                 Całość: {{ totalPrice }} zł
