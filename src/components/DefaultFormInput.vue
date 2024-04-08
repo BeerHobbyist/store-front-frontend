@@ -7,12 +7,14 @@ defineProps({
     },
     inputId: String,
 });
+
+const model = defineModel();
 </script>
 
 <template>
     <div class="input-wrapper">
         <label :for="inputId" class="input-label">{{ label }}</label>
-        <input :type="type" :id="inputId" class="input-field" />
+        <input :type="type" :id="inputId" class="input-field" v-model="model"/>
     </div>
 </template>
 

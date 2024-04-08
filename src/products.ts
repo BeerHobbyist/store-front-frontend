@@ -45,7 +45,7 @@ export const productsStore = reactive({
     },
     populateCategories: () => {
         const categories = productsStore.products.reduce((accumulator, product) => {
-            const category = accumulator.find(category => category.name === product.category);
+            const category = accumulator.find(category => category.name.toLocaleLowerCase() === product.category.toLocaleLowerCase());
             if (category) {
                 category.products.push(product);
             } else {
