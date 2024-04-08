@@ -28,13 +28,13 @@ const updateSelectedAmount = (id: string, amount: number) => {
 </script>
 
 <template>
-    <div class="itemList">
-        <table>
+    <div class="m-auto mt-5 w-2/3 bg-blue-400 rounded-md overflow-hidden shadow-2xl">
+        <table class="w-full border-separate border-spacing-0 overflow-hidden rounded-none">
             <thead>
                 <tr>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Amount</th>
+                    <th class="table-header">Product</th>
+                    <th class="table-header">Price</th>
+                    <th class="table-header">Amount</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,57 +49,8 @@ const updateSelectedAmount = (id: string, amount: number) => {
 </template>
 
 <style scoped>
-.itemList {
-    margin: auto;
-    margin-top: 20px;
-    /* Space from the top of the page */
-    width: 68%;
-    background-color: var(--secondary-color);
-    /* Background color */
-    border-radius: 3px;
-    /* Rounded corners */
-    overflow: hidden;
-    /* Ensures the inner table respects the container's border-radius */
-    box-shadow: 0px 0px 2px 0px var(--text-color);
-    /* Adds a shadow to the container */
-}
 
-.itemList table {
-    width: 100%;
-    border-collapse: separate;
-    /* Allows for spacing between cells */
-    border-spacing: 0px;
-    /* Adjusts the spacing to zero for a clean look */
-    overflow: hidden;
-    border-radius: 0px;
-}
-
-.itemList tbody tr:last-child td {
-    border-radius: 0px;
-}
-
-.itemList thead th {
-    padding: 10px;
-    /* Apply padding directly to the table header cells */
-    text-align: left;
-    color: var(--text-color);
-    /* A darker color for text */
-    background-color: white;
-    /* If you want the headers to stand out */
-    border-right: 1px solid var(--neutral-gray);
-    /* Add a border to the right of each header cell */
-    border-bottom: 1px solid var(--neutral-gray);
-    /* Add a border to the bottom of each header cell */
-}
-
-.itemList thead th:last-child {
-    border-right: none;
-    /* Remove the border from the last header cell */
-}
-
-.checkout-field {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+.table-header {
+    @apply bg-blue-400 text-white font-sans font-semibold tracking-tight text-left pl-1;
 }
 </style>
