@@ -8,6 +8,7 @@ onMounted(async () => {
     await productsStore.fetchProducts();
     productsStore.populateCategories();
 });
+
 </script>
 
 <template>

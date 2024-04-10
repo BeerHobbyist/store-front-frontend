@@ -28,6 +28,7 @@ function isProduct(item: any): item is Product {
 
 export const productsStore = reactive({
     products: [] as Product[],
+    isLoading: computed(() => productsStore.products.length === 0),
     fetchProducts: async () => {
         try {
             const response = await fetch('http://127.0.0.1:5001/belex-storefront/us-central1/api/products');
