@@ -4,18 +4,19 @@ import { productsStore } from '@/products';
 import CartFoot from '../components/CartFoot.vue'
 import CartItem from '../components/CartItem.vue'
 import { computed } from 'vue';
+import type { Product } from '@/products';
 
 const getName = (id: string) => {
-    return productsStore.products.find((product) => product.id === id)?.name;
+    return productsStore.products.find((product: Product) => product.id === id)?.name;
 };
 
 const getPrice = (id: string): number => {
-    return productsStore.products.find((product) => product.id === id)?.price ?? 0;
+    return productsStore.products.find((product: Product) => product.id === id)?.price ?? 0;
 };
 
 const totalPrice = computed(() => {
     return cartStore.cartItems.reduce((acc, item) => {
-        const productPrice = productsStore.products.find(product => product.id === item.id)?.price ?? 0;
+        const productPrice = productsStore.products.find((product: Product) => product.id === item.id)?.price ?? 0;
         return acc + productPrice * item.count;
     }, 0);
 
