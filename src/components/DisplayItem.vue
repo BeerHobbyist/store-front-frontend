@@ -15,8 +15,8 @@ watch(selectedAmount, (newValue: number) => {
 </script>
 
 <template>
-    <div v-motion-slide-visible-once-bottom
-        class="flex flex-col items-center bg-white ring-cyan-600 shadow-lg rounded-lg w-52 m-4 p2 transition ease-in-out duration-300 hover:shadow-2xl">
+    <div
+        class="flex flex-col items-center bg-white ring-cyan-600 shadow-lg rounded-lg h-[310px] w-52 m-4 p2 transition ease-in-out duration-300 hover:shadow-2xl">
         <img class="w-40 m-1" :src="imageUrl">
         <div class="m-1 text-center ">
             <div>{{ props.name }}</div>
