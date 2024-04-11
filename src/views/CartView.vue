@@ -6,13 +6,6 @@ import CartItem from '../components/CartItem.vue'
 import { computed } from 'vue';
 import type { Product } from '@/products';
 
-const getName = (id: string) => {
-    return productsStore.products.find((product: Product) => product.id === id)?.name;
-};
-
-const getPrice = (id: string): number => {
-    return productsStore.products.find((product: Product) => product.id === id)?.price ?? 0;
-};
 
 const totalPrice = computed(() => {
     return cartStore.cartItems.reduce((acc, item) => {
@@ -22,36 +15,47 @@ const totalPrice = computed(() => {
 
 });
 
+const getProduct = (id: string): Product | undefined => {
+    return productsStore.products.find((product: Product) => product.id === id);
+};
+
 const updateSelectedAmount = (id: string, amount: number) => {
     cartStore.updateAmount(id, amount);
 };
 
+const totalSelectedAmount = computed(() => {
+    return cartStore.cartItems.reduce((acc, item) => {
+        return acc + item.count;
+    }, 0);
+});
+
 </script>
 
 <template>
-    <div class="m-auto mt-5 w-2/3 bg-blue-400 rounded-md overflow-hidden shadow-2xl">
+    <div class="m-auto my-20 w-2/3 rounded-md overflow-hidden shadow-2xl" v-motion-slide-visible-once-bottom>
         <table class="w-full border-separate border-spacing-0 overflow-hidden rounded-none">
             <thead>
                 <tr>
-                    <th class="table-header">Product</th>
-                    <th class="table-header">Price</th>
-                    <th class="table-header">Amount</th>
+                    <th class="table-header border-r border-gray-200 border-b">Produkt</th>
+                    <th class="table-header border-r border-gray-200 border-b">Cena</th>
+                    <th class="table-header border-gray-200 border-b">Ilość</th>
                 </tr>
             </thead>
             <tbody>
-                <CartItem v-for="item in cartStore.cartItems" :key="item.id" :name="getName(item.id)"
-                    :selectedAmount="item.count" :price="Number((getPrice(item.id) * item.count).toFixed(2))"
-                    :id="item.id" @amountChanged="updateSelectedAmount" />
+                <CartItem v-for="item in cartStore.cartItems" :key="item.id" :name="getProduct(item.id)?.name"
+                    :selectedAmount="item.count"
+                    :total-price="Number(((getProduct(item.id)?.price ?? 0) * item.count).toFixed(2))" :id="item.id"
+                    :package-type="getProduct(item.id)?.packageType ?? 'not found'"
+                    :itemPrice="getProduct(item.id)?.price ?? 0" :image-url="getProduct(item.id)?.imageUrl ?? 'no image'" @amountChanged="updateSelectedAmount" />
             </tbody>
 
         </table>
-        <CartFoot :totalPrice="Number(totalPrice.toFixed(2))" />
+        <CartFoot :totalPrice="Number(totalPrice.toFixed(2))" :selected-amount="totalSelectedAmount"/>
     </div>
 </template>
 
 <style scoped>
-
 .table-header {
-    @apply bg-blue-400 text-white font-sans font-semibold tracking-tight text-left pl-1;
+    @apply bg-white text-blue-400 font-sans font-semibold tracking-tight text-left pl-2 text-xl;
 }
 </style>
