@@ -26,8 +26,9 @@ function isProduct(item: any): item is Product {
     );
 }
 
-export const productsStore = reactive({
+export const productsStore: any = reactive({
     products: [] as Product[],
+    isLoading: computed(() => productsStore.products.length === 0),
     fetchProducts: async () => {
         try {
             const response = await fetch('http://127.0.0.1:5001/belex-storefront/us-central1/api/products');
@@ -44,7 +45,7 @@ export const productsStore = reactive({
         }
     },
     populateCategories: () => {
-        const categories = productsStore.products.reduce((accumulator, product) => {
+        const categories = productsStore.products.reduce((accumulator: ProductCategory[], product: Product) => {
             const category = accumulator.find(category => category.name.toLocaleLowerCase() === product.category.toLocaleLowerCase());
             if (category) {
                 category.products.push(product);

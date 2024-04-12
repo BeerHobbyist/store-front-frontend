@@ -46,7 +46,7 @@ const submitForm = () => {
         <DefaultFormInput class="w-full" label="Email:" inputId="email" type="email" v-model="email"/>
         <DefaultFormInput class="w-full" label="Uwagi:" inputId="comment" v-model="remarks"/>
         <div class="flex justify-center mt-5">
-            <WideButton>Wyślij</WideButton>
+            <WideButton class="p-1">Wyślij</WideButton>
         </div>
     </form>
     </div>

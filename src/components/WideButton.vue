@@ -1,6 +1,6 @@
 <template>
   <button
-    class="bg-blue-400 hover:bg-blue-500 rounded-lg p-4 min-w-24 text-white shadow-lg transition ease-in-out duration-300 transform hover:scale-105"
+    class="bg-blue-400 hover:bg-blue-500 rounded-3xl min-w-24 text-white shadow-lg transition ease-in-out duration-300 transform hover:scale-105"
     @click="onClick">
     <slot></slot> <!-- Allows for custom button text -->
   </button>
