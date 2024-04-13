@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="bg-white p-5 shadow-md">
+  <header class="bg-white p-5 shadow-md sticky top-0 z-50">
     <div class="app-bar-content">
       <div class="left">
         <h1 class="title-caption">App Bar</h1>
@@ -13,14 +13,11 @@
         <RouterLink to="/">Home</RouterLink>
       </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <style scoped>
-.app-bar {
-  background-color: var(--primary-color);
-  padding: 1.2rem;
-}
+
 
 .app-bar-content {
   display: flex;

@@ -32,7 +32,7 @@ const totalSelectedAmount = computed(() => {
 </script>
 
 <template>
-    <div class="m-auto my-20 w-2/3 rounded-md overflow-hidden shadow-2xl" v-motion-slide-visible-once-bottom>
+    <div class="m-auto my-20 w-2/3 rounded-md overflow-hidden shadow-2xl mt-16" v-motion-slide-visible-once-bottom>
         <table class="w-full border-separate border-spacing-0 overflow-hidden rounded-none">
             <thead>
                 <tr>

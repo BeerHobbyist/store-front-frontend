@@ -5,12 +5,14 @@ defineProps<{ sectionName: string, items: Array<Product> }>();
 </script>
 
 <template>
-    <div class="flex flex-wrap flex-col items-center" v-motion-slide-visible-once-bottom>
-        <div class="p-4 w-6/12">
-            <span class="text-2xl font-sans uppercase border-b border-blue-400 block pb-2">{{ sectionName }}</span>
+    <div :id="sectionName" class="flex flex-wrap flex-col items-center" v-motion-fade-visible>
+        <div class="px-4 w-full md:w-8/12 lg:w-6/12 mt-6 mb-2">
+            <h2
+                class="text-2xl font-bold uppercase bg-white rounded-full shadow-md block text-center text-blue-400">
+                {{ sectionName }}
+            </h2>
         </div>
-        <div
-            class="flex flex-row flex-wrap justify-center sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-4xl 2xl:max-w-7xl">
+        <div class="flex flex-row flex-wrap justify-center">
             <DisplayItem v-for="item in items" :key="item.id" :id="item.id" :name="item.name"
                 :packageType="item.packageType" :price="item.price" :imageUrl="item.imageUrl" />
         </div>
