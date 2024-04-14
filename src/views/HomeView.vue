@@ -13,7 +13,7 @@ import ItemSection from '../components/ItemSection.vue'
     <div v-else class="flex">
         <!-- Sidebar -->
         <div class="block">
-            <div class="flex flex-col bg-white rounded-xl shadow-lg items-center justify-start sticky top-[120px] py-4 ml-10 mr-5 w-48 p-4 overflow-y-auto">
+            <div class="flex flex-col bg-white rounded-xl shadow-lg items-center justify-start sticky top-[130px] h-[75vh]  py-4 ml-10 mr-5 w-48 p-4 overflow-y-auto">
                 <h2 class="text-xl font-semibold text-gray-700 w-full text-left mb-5">Katgorie</h2>
                 <div class="w-full">
                     <RouterLink v-for="category in categoriesStore.categories" :key="category.name"
@@ -26,7 +26,7 @@ import ItemSection from '../components/ItemSection.vue'
         </div>
 
         <!-- Main Content Area -->
-        <div class="overflow-y-auto">
+        <div class="overflow-y-auto mx-auto">
             <div v-for="category in categoriesStore.categories" :key="category.name">
                 <ItemSection :sectionName="category.name" :items="category.products" />
             </div>
