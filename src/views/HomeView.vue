@@ -1,6 +1,32 @@
 <script setup lang="ts">
 import { categoriesStore, productsStore } from '../products'
 import ItemSection from '../components/ItemSection.vue'
+import { onMounted, onUnmounted, ref } from 'vue';
+
+const activeSection = ref('');
+
+const handleScroll = () => {
+    let foundSection = '';
+    for (const category of categoriesStore.categories) {
+        const sectionElement = document.getElementById(category.name);
+        if (sectionElement) {
+            const rect = sectionElement.getBoundingClientRect();
+            if (rect.top <= window.innerHeight / 2 && rect.top >= 0) {
+                foundSection = category.name;
+                break;
+            }
+        }
+    }
+    activeSection.value = foundSection;
+};
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
@@ -13,11 +39,13 @@ import ItemSection from '../components/ItemSection.vue'
     <div v-else class="flex">
         <!-- Sidebar -->
         <div class="block">
-            <div class="flex flex-col bg-white rounded-xl shadow-lg items-center justify-start sticky top-[130px] h-[75vh]  py-4 ml-10 mr-5 w-48 p-4 overflow-y-auto">
+            <div
+                class="flex flex-col bg-white rounded-xl shadow-lg items-center justify-start sticky top-[130px] h-[75vh]  py-4 ml-10 mr-5 w-48 p-4 overflow-y-auto">
                 <h2 class="text-xl font-semibold text-gray-700 w-full text-left mb-5">Katgorie</h2>
                 <div class="w-full">
                     <RouterLink v-for="category in categoriesStore.categories" :key="category.name"
                         :to="'#' + category.name"
+                        :class="{'active': activeSection === category.name}"
                         class="block py-2 px-3 mb-2 text-left text-gray-600 rounded-lg hover:bg-blue-50 hover:text-blue-500 active:bg-blue-100 transition duration-300 ease-in-out">
                         {{ category.name }}
                     </RouterLink>
@@ -34,4 +62,8 @@ import ItemSection from '../components/ItemSection.vue'
     </div>
 </template>
 
-
+<style scoped>
+.active {
+    @apply bg-blue-50 text-blue-500;
+}
+</style>
