@@ -13,6 +13,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.7.19",
     "@vueuse/core": "^10.9.0",
     "@vueuse/motion": "^2.1.0",
     "vue": "^3.4.21",
