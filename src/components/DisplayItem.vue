@@ -37,7 +37,7 @@ watch(selectedAmount, (newValue: number) => {
             leave="transform duration-200 transition ease-in-out" 
             leave-from="opacity-100 scale-100 "
             leave-to="opacity-0 scale-0"
-            class="fixed bottom-0 right-0 mb-4 mr-4 bg-green-600 shadow-xl rounded-lg p-6 w-auto z-50" >
+            class="fixed bottom-0 right-0 mb-4 mr-4 bg-green-400 shadow-xl rounded-lg p-6 w-auto z-50" >
             <div>
                 <h1 class="text-white">Dodano do koszyka</h1>
             </div>
