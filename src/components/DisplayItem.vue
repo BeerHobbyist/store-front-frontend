@@ -44,7 +44,7 @@ watch(selectedAmount, (newValue: number) => {
         </TransitionRoot>
     </teleport>
     <div
-        class="flex flex-col items-center justify-end bg-white ring-cyan-600 shadow-lg rounded-lg h-[310px] w-52 m-4 py-2 transition ease-in-out duration-300 hover:shadow-2xl">
+        class="flex flex-col items-center justify-end bg-white  shadow-lg rounded-lg h-[310px] w-52 m-4 py-2 transition ease-in-out duration-300 hover:shadow-2xl">
         <img class="w-40 my-auto" :src="imageUrl">
         <div class="m-1 text-center">
             <div>{{ props.name }}</div>
@@ -55,7 +55,7 @@ watch(selectedAmount, (newValue: number) => {
             <input class="border-gray-300 border-solid border rounded-lg text-center w-12 h-9 m-2" name="field"
                 type="number" min="0" v-model="selectedAmount">
             <button
-                class="w-9 h-9 bg-blue-400 transition ease-in-out duration-100 hover:bg-blue-500 active:bg-blue-700 active:ring-2 ring-blue-700 rounded-lg p-2 shadow-lg"
+                class="w-9 h-9 bg-green-400 transition ease-in-out duration-100 hover:bg-green-500 active:bg-green-700 active:ring-2 ring-green-700 rounded-lg p-2 shadow-lg"
                 @click="onAddToCart">
                 <img class="m-auto" src="/shopping-cart.svg" alt="shopping cart">
             </button>
