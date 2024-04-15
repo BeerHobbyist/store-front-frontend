@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <header class="bg-white/50 backdrop-blur backdrop-filter shadow-md sticky top-0 z-50">
+  <header class="bg-white/50 backdrop-blur backdrop-filter shadow-md sticky top-0 z-30">
     <div class="container mx-auto flex justify-between items-center">
       <div>
         <h1 class="font-dancing text-6xl text-gray-600 py-3 ml-2">Bełex</h1>
