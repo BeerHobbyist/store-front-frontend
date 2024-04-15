@@ -6,7 +6,7 @@ defineProps<{ sectionName: string, items: Array<Product> }>();
 
 <template>
     <div :id="sectionName" class="flex flex-wrap flex-col items-center px-10" v-motion-fade-visible>
-        <div class="px-4 w-full md:w-8/12 lg:w-6/12 mt-6 mb-2">
+        <div class="px-4 w-8/12 mt-6 mb-2">
             <h2
                 class="text-2xl font-bold uppercase bg-white rounded-full shadow-md block text-center text-blue-400">
                 {{ sectionName }}
