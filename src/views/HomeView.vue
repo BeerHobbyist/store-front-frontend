@@ -25,7 +25,6 @@ const filteredProducts = computed(() => {
     const products = productsStore.products.filter((product: Product) =>
         product.name.toLowerCase().includes(searchQuery.value.toLowerCase())
     );
-    console.log(products.length);
     return products;
     
 });

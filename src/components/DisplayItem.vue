@@ -23,6 +23,7 @@ function onAddToCart() {
 
 function handleImgClick() {
     isImgClicked.value = !isImgClicked.value;
+    console.log(isImgClicked.value);
 }
 
 watch(selectedAmount, (newValue: number) => {
