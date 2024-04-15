@@ -6,7 +6,7 @@
   <header class="bg-white  shadow-md sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center">
       <div>
-        <h1 class="font-dancing text-6xl text-gray-600 py-3">Belex</h1>
+        <h1 class="font-dancing text-6xl text-gray-600 py-3 ml-2">Belex</h1>
       </div>
       <nav class="flex">
         <div class="router-link-wrapper">
