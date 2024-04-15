@@ -97,7 +97,7 @@ watch(searchQuery, () => {
                     <ItemSection sectionName="Wyniki wyszukiwania" :items="filteredProducts" />
                 </div>
                 <div v-else>
-                    <h1 class="text-lg text-center text-gray-600 mt-10">Ups... Tu nic nie ma. Może źle wpisałeś nazwę?</h1>
+                    <h1 class="text-lg text-center text-gray-600 mt-10">Ups... Tu nic nie ma. Może źle wpisałeś nazwę? 🤔</h1>
                 </div>
             </div>
         </div>
