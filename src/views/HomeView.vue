@@ -66,7 +66,7 @@ watch(searchQuery, () => {
     <!-- Grid Layout: Sidebar and Content Area -->
     <div v-else class="flex">
         <!-- Sidebar -->
-        <div class="block">
+        <div class="lg:block hidden">
             <div
                 class="flex flex-col bg-white rounded-xl shadow-lg items-center justify-start sticky top-[130px] h-[75vh]  py-4 ml-10 mr-5 w-48 p-4 overflow-y-auto">
                 <h2 class="text-xl font-semibold text-gray-700 w-full text-left mb-5">Katgorie</h2>
