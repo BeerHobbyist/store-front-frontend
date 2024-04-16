@@ -17,14 +17,15 @@ const handleSearch = () => {
     }
 };
 
-const filteredProducts = computed(() => {
+const filteredProducts = computed<Product[]>(() => {
     if (!searchQuery.value) {
         isSearchEmpty.value = true;
-        return null;
+        return [];
     }
     const products = productsStore.products.filter((product: Product) =>
         product.name.toLowerCase().includes(searchQuery.value.toLowerCase())
     );
+
     return products;
     
 });
@@ -86,16 +87,16 @@ watch(searchQuery, () => {
                     class="h-10 rounded-full md:w-full xl:w-[700px] px-5 border-2 border-blue-400 focus:border-blue-600 focus:outline-none bg-white shadow-xl"
                     type="search" placeholder="Znajdź produkt który szukasz..." v-model="searchQuery"/>
             </div>
-            <div v-if="!isSearching" class="overflow-y-auto mx-auto">
+            <div v-show="!isSearching" class="overflow-y-auto mx-auto">
                 <div v-for="category in categoriesStore.categories" :key="category.name">
                     <ItemSection :sectionName="category.name" :items="category.products" />
                 </div>
             </div>
-            <div v-else class="min-h-screen">
-                <div v-if="filteredProducts.length !== 0">
+            <div v-show="isSearching" class="min-h-screen">
+                <div v-show="filteredProducts.length !== 0">
                     <ItemSection sectionName="Wyniki wyszukiwania" :items="filteredProducts" />
                 </div>
-                <div v-else>
+                <div v-show="filteredProducts.length === 0">
                     <h1 class="text-lg text-center text-gray-600 mt-10">Ups... Tu nic nie ma. Może źle wpisałeś nazwę? 🤔</h1>
                 </div>
             </div>

@@ -2,12 +2,12 @@
 import { ref, watch } from 'vue';
 import { cartStore } from '../cart';
 import { TransitionRoot, Dialog, DialogPanel, DialogTitle, DialogDescription } from '@headlessui/vue';
+import ExpandableImage from './ExpandableImage.vue';
 
 const props = defineProps<{ id: string, name?: string, packageType?: string, price: number, imageUrl: string }>();
 
 const selectedAmount = ref(1);
 const isOpen = ref(false);
-const isImgClicked = ref(false);
 
 function setIsOpen(value: boolean) {
     isOpen.value = value;
@@ -21,11 +21,6 @@ function onAddToCart() {
     setIsOpen(true);
 }
 
-function handleImgClick() {
-    isImgClicked.value = !isImgClicked.value;
-    console.log(isImgClicked.value);
-}
-
 watch(selectedAmount, (newValue: number) => {
     if (newValue < 0) {
         selectedAmount.value = 0;
@@ -35,12 +30,6 @@ watch(selectedAmount, (newValue: number) => {
 </script>
 
 <template>
-    <Dialog :open="isImgClicked" @close="handleImgClick" class="fixed z-40 inset-0 flex items-center justify-center p-4">
-        <div v-show="isImgClicked" class="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
-        <DialogPanel class="max-w-4xl mx-auto bg-white rounded shadow-lg p-6 z-50">
-            <img :src="props.imageUrl" alt="product image" class="w-[100vw] object-cover rounded-lg ">
-        </DialogPanel>
-    </Dialog>
     <teleport to="body">
         <TransitionRoot :show="isOpen" appear enter="transform transition duration-200" enter-from="opacity-0 scale-0"
             enter-to="opacity-100 scale-100" leave="transform duration-200 transition ease-in-out"
@@ -53,7 +42,7 @@ watch(selectedAmount, (newValue: number) => {
     </teleport>
     <div
         class="flex flex-col items-center justify-end bg-white  shadow-lg rounded-lg h-[310px] w-52 m-4 py-2 transition ease-in-out duration-300 hover:shadow-2xl">
-        <img class="w-40 my-auto hover:cursor-pointer" :src="imageUrl" @click="handleImgClick">
+        <ExpandableImage class="w-40 my-auto hover:cursor-pointer" :src="imageUrl" alt="product image"/>
         <div class="m-1 text-center">
             <div>{{ props.name }}</div>
             <div>{{ props.packageType }}</div>
