@@ -3,6 +3,7 @@ import { ref, watch } from 'vue';
 import { cartStore } from '../cart';
 import { TransitionRoot, Dialog, DialogPanel, DialogTitle, DialogDescription } from '@headlessui/vue';
 import ExpandableImage from './ExpandableImage.vue';
+import PopupNotification from './PopupNotification.vue';
 
 const props = defineProps<{ id: string, name?: string, packageType?: string, price: number, imageUrl: string }>();
 
@@ -31,14 +32,9 @@ watch(selectedAmount, (newValue: number) => {
 
 <template>
     <teleport to="body">
-        <TransitionRoot :show="isOpen" appear enter="transform transition duration-200" enter-from="opacity-0 scale-0"
-            enter-to="opacity-100 scale-100" leave="transform duration-200 transition ease-in-out"
-            leave-from="opacity-100 scale-100 " leave-to="opacity-0 scale-0"
-            class="fixed bottom-0 right-0 mb-4 mr-4 bg-green-400 shadow-xl rounded-lg p-6 w-auto z-50">
-            <div>
-                <h1 class="text-white">Dodano do koszyka</h1>
-            </div>
-        </TransitionRoot>
+        <PopupNotification :is-open="isOpen" bg-color="bg-green-500" text-color="text-white">
+            Dodano do koszyka
+        </PopupNotification>
     </teleport>
     <div
         class="flex flex-col items-center justify-end bg-white  shadow-lg rounded-lg h-[310px] w-52 m-4 py-2 transition ease-in-out duration-300 hover:shadow-2xl">

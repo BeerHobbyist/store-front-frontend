@@ -4,9 +4,13 @@ import WideButton from './WideButton.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { TransitionRoot } from '@headlessui/vue';
+import PopupNotification from './PopupNotification.vue';
+
 defineProps<{ totalPrice: number, selectedAmount: number }>();
+
 const router = useRouter();
 const isOpen = ref(false);
+
 function setIsOpen(value: boolean) {
     isOpen.value = value;
     setTimeout(() => {
@@ -26,14 +30,9 @@ function onSubmitCart() {
 
 <template>
     <teleport to="body">
-        <TransitionRoot :show="isOpen" appear enter="transform transition duration-200" enter-from="opacity-0 scale-0"
-            enter-to="opacity-100 scale-100" leave="transform duration-200 transition ease-in-out"
-            leave-from="opacity-100 scale-100 " leave-to="opacity-0 scale-0"
-            class="fixed bottom-0 right-0 mb-4 mr-4 bg-red-600 shadow-xl rounded-lg p-6 w-auto z-50">
-            <div>
-                <h1 class="text-white">Koszyk nie może być pusty</h1>
-            </div>
-        </TransitionRoot>
+        <PopupNotification :is-open="isOpen" bg-color="bg-red-500" text-color="text-white">
+            Koszyk jest pusty
+        </PopupNotification>
     </teleport>
     <div class="flex flex-row justify-between p-2 bg-gray-200 items-end">
         <WideButton class="p-1 text-center text-base" @click="cartStore.clearCart">Wyczyść</WideButton>
