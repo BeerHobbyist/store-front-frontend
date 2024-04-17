@@ -24,38 +24,40 @@ onMounted(() => {
 
 <template>
     <Disclosure>
-        <DisclosureButton
-            class="w-full rounded-lg bg-slate-200 shadow-lg mb-5 px-4 py-2 text-left text-sm font-medium text-black hover:bg-slate-300 focus:outline-none focus-visible:ring focus-visible:ring-slate-600/75">
-            <div class="flex flex-row justify-between">
-                <div>
+        <div>
+            <DisclosureButton
+                class="w-full rounded-lg bg-slate-200 shadow-lg mb-5 px-4 py-2 text-left text-sm font-medium text-black hover:bg-slate-300 focus:outline-none focus-visible:ring focus-visible:ring-slate-600/75">
+                <div class="flex flex-row justify-between">
                     <div>
-                        <div class="text-xl font-semibold">{{ companyName }}</div>
-                        <div class="text-sm text-gray-500">Nip: {{ nip }}</div>
+                        <div>
+                            <div class="text-xl font-semibold">{{ companyName }}</div>
+                            <div class="text-sm text-gray-500">Nip: {{ nip }}</div>
+                        </div>
+                        <div>
+                            <div class="text-sm text-red-500">Tel: {{ phone }}</div>
+                            <div class="text-sm text-gray-500">Email: {{ email }}</div>
+                        </div>
                     </div>
                     <div>
-                        <div class="text-sm text-red-500">Tel: {{ phone }}</div>
-                        <div class="text-sm text-gray-500">Email: {{ email }}</div>
+                        <div>{{ orderDate.toDateString() }}</div>
+                        <div class="text-right">{{ orderDate.getHours() }}:{{ orderDate.getMinutes() }}</div>
                     </div>
                 </div>
-                <div>
-                    <div>{{ orderDate.toDateString() }}</div>
-                    <div class="text-right">{{ orderDate.getHours() }}:{{ orderDate.getMinutes() }}</div>
-                </div>
-            </div>
-        </DisclosureButton>
-        <DisclosurePanel>
-            <div class="h-80 overflow-y-auto">
-                <div class="pb-4 pt-4 px-4 text-lg flex flex-row justify-between bg-slate-50 ring-2 ring-slate-300 rounded-md m-4"
-                    v-for="product in products">
-                    <div>
-                        <h3 class="text-xl font-semibold">{{ product.product.name }}</h3>
-                        <p class="text-sm text-gray-500">{{ product.count }} x {{ product.product.price }} zł</p>
-                    </div>
-                    <div class="grid place-items-center">
-                        <p class="text-base text-gray-700">{{ product.product.packageType }}</p>
+            </DisclosureButton>
+            <DisclosurePanel>
+                <div class="h-80 overflow-y-auto">
+                    <div class="pb-4 pt-4 px-4 text-lg flex flex-row justify-between bg-slate-50 ring-2 ring-slate-300 rounded-md m-4"
+                        v-for="product in products">
+                        <div>
+                            <h3 class="text-xl font-semibold">{{ product.product.name }}</h3>
+                            <p class="text-sm text-gray-500">{{ product.count }} x {{ product.product.price }} zł</p>
+                        </div>
+                        <div class="grid place-items-center">
+                            <p class="text-base text-gray-700">{{ product.product.packageType }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </DisclosurePanel>
+            </DisclosurePanel>
+        </div>
     </Disclosure>
 </template>

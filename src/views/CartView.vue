@@ -65,23 +65,25 @@ const totalSelectedAmount = computed(() => {
                     <div class="text-sm text-gray-600">{{ getProduct(item.id)?.packageType ?? 'not found' }}</div>
                 </div>
                 <div class=" flex items-center justify-center">
-                        <button @click="updateSelectedAmount(item.id, item.count - 1)" class="p-1 border rounded-lg bg-white shadow-md active:bg-gray-200">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
-                            </svg>
+                    <button @click="updateSelectedAmount(item.id, item.count - 1)"
+                        class="p-1 border rounded-lg bg-white shadow-md active:bg-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                        </svg>
 
-                        </button>
-                        <input type="number" class="text-center w-12 h-7 ml-2 border rounded-lg bg-white shadow-md" v-model="item.count">
-                        <button @click="updateSelectedAmount(item.id, item.count + 1)"
-                            class="p-1 border rounded-lg ml-2 bg-white shadow-md active:bg-gray-200">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                            </svg>
+                    </button>
+                    <input type="number" class="text-center w-12 h-7 ml-2 border rounded-lg bg-white shadow-md"
+                        v-model="item.count">
+                    <button @click="updateSelectedAmount(item.id, item.count + 1)"
+                        class="p-1 border rounded-lg ml-2 bg-white shadow-md active:bg-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
 
-                        </button>
-                    </div>
+                    </button>
+                </div>
             </div>
             <CartFoot :totalPrice="Number(totalPrice.toFixed(2))" :selected-amount="totalSelectedAmount" />
         </div>
