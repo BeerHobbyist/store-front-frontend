@@ -3,11 +3,13 @@ import { createWebHistory, createRouter } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 import CartView from '@/views/CartView.vue';
 import CheckoutView from '@/views/CheckoutView.vue';
+import AdminView from '@/views/AdminView.vue';
 
 const routes = [
   { path: '/', component: HomeView },
   { path: '/cart', component: CartView },
-  { path: '/checkout', component: CheckoutView }
+  { path: '/checkout', component: CheckoutView },
+  { path: '/admin', component: AdminView }
 ]
 
 const router = createRouter({
@@ -17,7 +19,7 @@ const router = createRouter({
       return {
         el: to.hash,
         behavior: 'smooth',
-        top: 80 // Adjust this value as needed to get the desired offset
+        top: 80
       }
     } else if (savedPosition) {
       return savedPosition;
