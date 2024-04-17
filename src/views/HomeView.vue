@@ -85,7 +85,7 @@ watch(searchQuery, () => {
             <div class="block mt-8 mb-4 text-center">
                 <input
                     class="h-10 rounded-full md:w-full xl:w-[700px] px-5 border-2 border-blue-400 focus:border-blue-600 focus:outline-none bg-white shadow-xl"
-                    type="search" placeholder="Znajdź produkt który szukasz..." v-model="searchQuery"/>
+                    type="search" placeholder="Znajdź produkt..." v-model="searchQuery"/>
             </div>
             <div v-show="!isSearching" class="overflow-y-auto mx-auto">
                 <div v-for="category in categoriesStore.categories" :key="category.name">
@@ -97,7 +97,7 @@ watch(searchQuery, () => {
                     <ItemSection sectionName="Wyniki wyszukiwania" :items="filteredProducts" />
                 </div>
                 <div v-show="filteredProducts.length === 0">
-                    <h1 class="text-lg text-center text-gray-600 mt-10">Ups... Tu nic nie ma. Może źle wpisałeś nazwę? 🤔</h1>
+                    <h1 class="text-lg text-center text-gray-600 mt-10 mx-2">Ups... Tu nic nie ma. Może źle wpisałeś nazwę? 🤔</h1>
                 </div>
             </div>
         </div>
