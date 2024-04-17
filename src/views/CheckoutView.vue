@@ -38,7 +38,7 @@ const submitForm = () => {
 </script>
 
 <template>
-    <div class="w-1/2 m-auto mt-16 rounded shadow-lg p-5 bg-white">
+    <div class="sm:w-1/2 mx-auto mt-5 sm:mt-16 rounded sm:shadow-lg p-5 sm:bg-white">
         <form class="checkout-form" @submit.prevent="submitForm">
         <DefaultFormInput class="w-full" label="Nazwa firmy:" inputId="name" v-model="companyName"/>
         <DefaultFormInput class="w-full" label="NIP:" inputId="nip" type="number" v-model="nip"/>
