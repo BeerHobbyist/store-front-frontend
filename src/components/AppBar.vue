@@ -25,7 +25,7 @@ function toggleMenu() {
       </div>
       <Navbar class="sm:flex-row sm:flex hidden" />
     </div>
-    <Navbar v-show="menuOpen"/>
+    <Navbar class="pb-2" v-show="menuOpen"/>
   </header>
 </template>
 
