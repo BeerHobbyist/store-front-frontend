@@ -1,7 +1,6 @@
 <template>
     <nav>
-        <div class="router-link-wrapper">
-            <RouterLink to="/" class="flex items-center px-2 py-2">
+        <RouterLink to="/" class="flex items-center px-2 py-2 router-link-wrapper">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -9,9 +8,7 @@
                 </svg>
                 Oferta
             </RouterLink>
-        </div>
-        <div class="router-link-wrapper">
-            <RouterLink to="/cart" class="flex items-center px-2 py-2">
+        <RouterLink to="/cart" class="flex items-center px-2 py-2 router-link-wrapper">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -19,9 +16,7 @@
                 </svg>
                 Koszyk
             </RouterLink>
-        </div>
-        <div class="router-link-wrapper">
-            <RouterLink to="/contact" class="flex items-center px-2 py-2">
+        <RouterLink to="/contact" class="flex items-center px-2 py-2 router-link-wrapper">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-7 h-7 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -29,7 +24,6 @@
                 </svg>
                 Kontakt
             </RouterLink>
-        </div>
     </nav>
 </template>
 
