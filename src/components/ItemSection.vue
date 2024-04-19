@@ -14,7 +14,7 @@ defineProps<{ sectionName: string, items: Array<Product> }>();
         </div>
         <div class="flex flex-row flex-wrap justify-center">
             <DisplayItem v-for="item in items" :key="item.id" :id="item.id" :name="item.name"
-                :packageType="item.packageType" :price="item.price" :imageUrl="item.imageUrl" />
+                :packageType="item.packageType" :price="item.price" :imageUrl="item.imageUrl" :disabled="item.disabled" />
         </div>
     </div>
 </template>
