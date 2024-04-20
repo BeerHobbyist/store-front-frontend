@@ -50,25 +50,4 @@ To get started with the Store Frontend project, follow these steps:
     ```
     yarn install
     ```
-
-4. Create a Firebase project and set up Firestore:
-    - Go to the [Firebase Console](https://console.firebase.google.com/) and create a new project.
-    - Enable Firestore in the Firebase project.
-    - Copy the Firebase configuration object.
-
-5. Configure the Firebase project in the application:
-    - Rename the `.env.example` file to `.env`.
-    - Open the `.env` file and replace the placeholder values with your Firebase configuration.
-
-6. Start the development server:
-    ```
-    npm run serve
-    ```
-    or
-    ```
-    yarn serve
-    ```
-
-7. Open your browser and navigate to `http://localhost:8080` to see the Store Frontend in action.
-
-That's it! You are now ready to start exploring and customizing the Store Frontend project.
+Now you are ready to start the project.
