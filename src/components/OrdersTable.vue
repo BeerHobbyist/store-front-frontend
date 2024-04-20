@@ -21,7 +21,7 @@ import { TabGroup, TabList, Tab, TabPanel, TabPanels } from "@headlessui/vue";
           >
             <OrderTab
               :class="{
-                'p-2 bg-white rounded-lg drop-shadow-md focus:outline-none transform ease-in-out duration-400':
+                'p-2 bg-white rounded-lg drop-shadow-md focus:outline-none hover:drop-shadow-lg transition duration-300 ease-in-out':
                   !selected,
                 'p-2 bg-blue-100 rounded-lg drop-shadow-xl scale-105 focus:outline-none':
                   selected,
