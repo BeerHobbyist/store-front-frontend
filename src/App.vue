@@ -12,7 +12,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <AppBar />
+  <RouterView name="appbar"/>
   <RouterView/>
 </template>
 
