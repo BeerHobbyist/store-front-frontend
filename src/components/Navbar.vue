@@ -1,6 +1,10 @@
+<script setup lang="ts">
+import DefaultRouterLink from "@/components/DefaultRouterLink.vue";
+</script>
+
 <template>
   <nav>
-    <RouterLink to="/" class="flex items-center px-2 py-2 router-link-wrapper">
+    <DefaultRouterLink to="/">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -16,11 +20,8 @@
         />
       </svg>
       Oferta
-    </RouterLink>
-    <RouterLink
-      to="/cart"
-      class="flex items-center px-2 py-2 router-link-wrapper"
-    >
+    </DefaultRouterLink>
+    <DefaultRouterLink to="/cart">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -36,11 +37,8 @@
         />
       </svg>
       Koszyk
-    </RouterLink>
-    <RouterLink
-      to="/contact"
-      class="flex items-center px-2 py-2 router-link-wrapper"
-    >
+    </DefaultRouterLink>
+    <DefaultRouterLink to="/contact">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -56,12 +54,6 @@
         />
       </svg>
       Kontakt
-    </RouterLink>
+    </DefaultRouterLink>
   </nav>
 </template>
-
-<style scoped>
-.router-link-wrapper {
-  @apply flex mx-1 hover:text-blue-500 hover:border-blue-500 text-gray-600 text-xl border border-transparent rounded transition duration-300 ease-in-out;
-}
-</style>
