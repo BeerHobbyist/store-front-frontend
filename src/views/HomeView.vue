@@ -119,7 +119,7 @@ watch(searchQuery, () => {
         </div>
         <div v-show="filteredProducts.length === 0">
           <h1 class="text-lg text-center text-gray-600 mt-10 mx-2">
-            Ups... Tu nic nie ma. Może źle wpisałeś nazwę? 🤔
+            Ups... Tu nic nie ma. Może źle wpisałeś nazwę?
           </h1>
         </div>
       </div>
